@@ -5,7 +5,7 @@
     "${modulesPath}/profiles/qemu-guest.nix"
     "${modulesPath}/virtualisation/lxc-container.nix"
 
-    ./../../services/immich.nix
+    ./../../services/caddy.nix
   ];
 
   config = {
