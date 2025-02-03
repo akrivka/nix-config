@@ -4,15 +4,9 @@
   services.caddy = {
     enable = true;
     package = pkgs.caddy;
+    
 
-    config = ''
-      :80 {
-        root * /var/www/html
-        file_server
-      }
-    '';
-
-    virtualHosts."immich.adam".extraConfig = ''
+    virtualHosts.":80".extraConfig = ''
       reverse_proxy :2283
     '';
   };
