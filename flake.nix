@@ -7,7 +7,7 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, vscode-server, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations = {
       nix-test = nixpkgs.lib.nixosSystem {
