@@ -52,6 +52,11 @@
 
     system.stateVersion = lib.mkDefault "24.11";
 
+    systemd.mounts = [{
+      where = "/sys/kernel/debug";
+      enable = false;
+    }];
+
     # Add user 'adam'
     users.users.adam = {
       isNormalUser = true;
