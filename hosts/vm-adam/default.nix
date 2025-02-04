@@ -12,6 +12,8 @@
     ../common
     ../common/users/adam.nix
 
+    inputs.home-manager.nixosModules.default
+
     ./hardware-configuration.nix
 
     ./services/caddy.nix
@@ -25,5 +27,12 @@
     hostName = "vm-adam";
   };
 
-  system.stateVersion = lib.mkDefault "24.11";
+  system.stateVersion = lib.mkDefault "24.11";  
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      adam = import ./adam.nix;
+    }
+  }
 }
