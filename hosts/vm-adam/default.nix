@@ -14,20 +14,16 @@
 
     ./hardware-configuration.nix
 
-    ./../vm-adam/services/caddy.nix
-    ./../vm-adam/services/immich.nix
-    ./../vm-adam/services/syncthing.nix
-    ./../vm-adam/services/gitea.nix
+    ./services/caddy.nix
+    ./services/immich.nix
+    ./services/syncthing.nix
+    ./services/gitea.nix
   ];
 
   #Provide a default hostname
   networking = {
-    hostName = "vm-test";
+    hostName = "vm-adam";
   };
 
   system.stateVersion = lib.mkDefault "24.11";
-
-  # Enable QEMU Guest for Proxmox
-  #services.qemuGuest.enable = lib.mkDefault true;
-
 }

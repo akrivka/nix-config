@@ -5,9 +5,17 @@
   ...
 }:
 
+let
+  port = 2283;
+in
 {
   services.immich = {
     enable = true;
-    port = 2283;
+    port = port;
   };
+
+  services.caddy.virtualHosts."http://immich.adam2".extraConfig = ''
+    reverse_proxy http://[::1]:${port}
+  '';
+
 }

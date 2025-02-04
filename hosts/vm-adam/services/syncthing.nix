@@ -5,14 +5,21 @@
   ...
 }:
 
+let
+  port = 8384;
+in
 {
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    guiAddress = "0.0.0.0:8384";
+    guiAddress = "0.0.0.0:${port}";
     settings.gui = {
       user = "adam";
       password = "ahoj";
     };
   };
+
+  services.caddy.virtualHosts."http://syncthing.adam2".extraConfig = ''
+    reverse_proxy :${port}
+  '';
 }
