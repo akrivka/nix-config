@@ -1,27 +1,31 @@
 {
-  description = "A simple NixOS flake";
+  description = "Adam Krivka's NixOS flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-24.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
+    /* home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; */
   };
 
-  outputs = { self, nixpkgs, vscode-server, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations = {
-      nix-test = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
-          ./machines/vm-test/configuration.nix
-          vscode-server.nixosModules.default
-          ({ config, pkgs, ... }: {
-            services.vscode-server.enable = true;
-          })
-        ];
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    {
+      nixosConfigurations = {
+
+        nix-test = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/vm-test ];
+        };
+
+        vm-adam = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/vm-adam ];
+        };
       };
     };
-  };
 }
