@@ -24,7 +24,6 @@
 
         vm-adam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          extraSpecialArgs = {inherit inputs};
           modules = [ ./hosts/vm-adam ];
         };
       };

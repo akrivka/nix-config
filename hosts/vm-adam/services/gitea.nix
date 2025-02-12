@@ -18,5 +18,4 @@ in
   services.caddy.virtualHosts."http://git.adam2".extraConfig = ''
     reverse_proxy :${toString port}
   '';
-  '';
 }

@@ -16,7 +16,7 @@
     ./services/caddy.nix
     ./services/immich.nix
     ./services/syncthing.nix
-    ./services/gitea.nix
+    #./services/gitea.nix
   ];
 
   system.stateVersion = lib.mkDefault "24.11";  
