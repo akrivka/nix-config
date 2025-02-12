@@ -11,6 +11,13 @@ deploy machine ip='':
     nixos-rebuild switch --fast --flake ".#{{machine}}" --use-remote-sudo --target-host "eh8@{{ip}}" --build-host "eh8@{{ip}}"
   fi
 
+send destination:
+  #!/usr/bin/env sh
+  tar --exclude='./.*' --exclude='.git' --exclude='.gitignore' -czf archive.tar.gz .
+  scp archive.tar.gz {{destination}}:~/nix-config/archive.tar.gz
+  ssh {{destination}} 'mkdir -p ~/nix-config && tar -xzf ~/nix-config/archive.tar.gz -C ~/nix-config && rm ~/nix-config/archive.tar.gz'
+  rm archive.tar.gz
+
 up:
   nix flake update
 

@@ -52,8 +52,8 @@
   environment.systemPackages = with pkgs; [
     vim # for emergencies
     git # for pulling nix flakes
-    pkgs.nixfmt-rfc-style # for formatting in SSH sessions
-    pkgs.just
+    nixfmt-rfc-style # for formatting in SSH sessions
+    just
   ];
 
 }
