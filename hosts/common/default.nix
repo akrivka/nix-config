@@ -46,6 +46,7 @@
 
   # Some sane packages we need on every system
   environment.systemPackages = with pkgs; [
+    man # manual pages
     vim # for emergencies
     git # for pulling nix flakes
     nixfmt-rfc-style # for formatting in SSH sessions
