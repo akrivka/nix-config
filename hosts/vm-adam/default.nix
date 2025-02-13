@@ -31,8 +31,9 @@
   system.activationScripts = {
       create-folders = {
         text = ''mkdir -p /data/Adam/Drive
-                 mkdir -p /data/Adam/Photos
-                 mkdir -p /data/Adam/Services'';
+                 chown -R syncthing /data/Adam/Drive
+                 [ ! -L /data/Adam/Photos ] && ln -s /data/Adam/Services/immich/library/admin /data/Adam/Photos
+                 mkdir -p /data/Adam/Services/immich'';
     };
   };  
 }
