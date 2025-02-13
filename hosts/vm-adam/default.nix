@@ -16,6 +16,8 @@
     ./services/caddy.nix
     ./services/immich.nix
     ./services/syncthing.nix
+    ./services/anki-sync-server.nix
+    ./services/home-assistant.nix
     #./services/gitea.nix
   ];
 
