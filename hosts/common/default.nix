@@ -30,7 +30,6 @@
     enable = true;
     settings = {
       PasswordAuthentication = false; # disable password login
-      PermitRootLogin = "no"; # disable root login
       KbdInteractiveAuthentication = false;
     };
     openFirewall = true;
@@ -45,9 +44,6 @@
     }
   ];
 
-  # Enable VSCode server for all VMs
-  services.vscode-server.enable = true;
-
   # Some sane packages we need on every system
   environment.systemPackages = with pkgs; [
     vim # for emergencies
@@ -55,5 +51,8 @@
     nixfmt-rfc-style # for formatting in SSH sessions
     just
   ];
+
+  # Enable VSCode server for all VMs
+  services.vscode-server.enable = true;
 
 }
