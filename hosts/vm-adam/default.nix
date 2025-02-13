@@ -26,4 +26,13 @@
     hostName = "vm-adam";
   };
 
+  # Create a empty folders /data/Adam/Drive, /data/Adam/Photos and /data/Adam/Services
+  # using activation scripts
+  system.activationScripts = {
+      create-folders = {
+        text = ''mkdir -p /data/Adam/Drive
+                 mkdir -p /data/Adam/Photos
+                 mkdir -p /data/Adam/Services'';
+    };
+  };  
 }
