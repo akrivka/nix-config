@@ -13,9 +13,18 @@ in
     enable = true;
     openDefaultPorts = true;
     guiAddress = "0.0.0.0:${toString port}";
-    settings.gui = {
-      user = "adam";
-      password = "ahoj";
+    group = "wheel";
+    settings = {
+      gui = {
+        user = "adam";
+        password = "password";
+      };
+      folders = {
+        "Drive" = {
+          path = "/data/Adam/Drive";
+          devices = [ ];
+        };
+      };
     };
   };
 
