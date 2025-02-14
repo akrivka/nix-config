@@ -24,3 +24,5 @@
 ## Steps to set up a NixOS VM after having done the previous steps or used the template
 
 1. configure network from Proxmox
+2. run this to enable VSCode server
+    `systemctl --user enable auto-fix-vscode-server.service`
