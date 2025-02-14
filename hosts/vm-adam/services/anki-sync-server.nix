@@ -12,7 +12,7 @@ in
   services.anki-sync-server = {
     enable = true;
     port = port;
-    baseDirectory = "/data/Adam/Services/anki";
+    #baseDirectory = "/data/Adam/Services/anki";
     users = [
       {
         username = "adam";

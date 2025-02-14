@@ -4,6 +4,12 @@
 
 [] Set up home-manager
 [] Switch `nixos-vscode-server` to Flakes (`fetchTarball` in `hosts/common/default.nix` triggers an issue if not building with `--impure`)
+[] Move anki-sync-server to /data/Adam
+    - current problem is that the anki-sync-server package 
+    runs under a dynamic user, which doesn't have permission to write to that folder
+        - the solutions are either to symlink/hardlink from /var/lib/anki-sync-server... but then this symlink will need to be handled differently from the Photos symlink
+        - make a fork to the anki-sync-server module
+            - could also submit a pull request
 
 ## Steps to create a new NixOS VM on Ryloth Proxmox from scrath
 
