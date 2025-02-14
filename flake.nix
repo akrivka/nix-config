@@ -10,10 +10,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixarr = {
+      url = "github:rasmus-kirk/nixarr";
+    };
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, nixarr, ... }@inputs:
     {
       nixosConfigurations = {
 
@@ -25,6 +29,14 @@
         vm-adam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./hosts/vm-adam ];
+        };
+
+        vm-fun = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ 
+            ./hosts/vm-fun 
+            nixarr.nixosModules.default
+          ];
         };
       };
     };
