@@ -1,6 +1,9 @@
 default:
   just --list
 
+rebuild:
+  nixos-rebuild switch --fast --impure --flake .
+
 deploy machine ip='':
   #!/usr/bin/env sh
   if [ {{machine}} = "macos" ]; then
