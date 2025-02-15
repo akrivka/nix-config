@@ -34,4 +34,16 @@
     lidarr.enable = true;
     jellyseerr.enable = true;
   };
+
+  services.caddy = {
+    enable = true;
+
+    virtualHosts.":80".extraConfig = ''
+      respond "Hello from vm-fun"
+    '';
+
+    virtualHosts."http://jellyfin.fun".extraConfig = ''
+    reverse_proxy :8096
+    '';
+  };
 }
