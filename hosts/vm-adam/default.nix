@@ -38,4 +38,17 @@
                  mkdir -p /data/Adam/Services/immich'';
     };
   };  
+
+  # BACKUP to scarif using restic
+  services.restic.backups = {
+    local = {
+      repository = "sftp:ryloth@scarif:/mnt/zfs-2024-09-08/backup2/Adam";
+      paths = [ "/data/Adam" ];
+      timerConfig = {
+        OnCalendar = "daily";
+      };
+      passwordFile = "./restic-password";
+      initialize = true;
+    };
+  };
 }
