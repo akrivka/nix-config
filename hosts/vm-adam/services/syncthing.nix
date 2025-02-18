@@ -14,16 +14,18 @@ in
     openDefaultPorts = true;
     guiAddress = "0.0.0.0:${toString port}";
     group = "wheel";
+
+    overrideDevices = false;
+    overrideFolders = false;
+    
     settings = {
       gui = {
         user = "adam";
         password = "password";
       };
-      folders = {
-        "Drive" = {
-          path = "/data/Adam/Drive";
-          devices = [ ];
-        };
+      devices = {
+        "Legion5" = { id = "GI5Q2QK-KG4CBII-FZC3EN3-WVTMAZI-BVBQHDY-EVRNI4U-RQGCSFO-SYYDKQF"; };
+        "MacbookProM1" = { id = "CLBZ4GN-BWVG2VM-I7WXKUT-EMVN64J-WS6OKMT-ITP3HFH-JR4WNQT-ATAANA5"; };
       };
     };
   };
