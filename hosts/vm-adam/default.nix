@@ -21,6 +21,8 @@
     #./services/gitea.nix
   ];
 
+  # DO NOT CHANGE THIS!!! 
+  # https://search.nixos.org/options?channel=unstable&show=system.stateVersion&from=0&size=50&sort=relevance&type=packages&query=system.stateVersion
   system.stateVersion = lib.mkDefault "24.11";
 
   #Provide a default hostname
