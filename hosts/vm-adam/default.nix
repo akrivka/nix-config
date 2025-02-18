@@ -21,7 +21,7 @@
     #./services/gitea.nix
   ];
 
-  system.stateVersion = lib.mkDefault "24.11";  
+  system.stateVersion = lib.mkDefault "24.11";
 
   #Provide a default hostname
   networking = {
@@ -31,11 +31,26 @@
   # Create a empty folders /data/Adam/Drive, /data/Adam/Photos and /data/Adam/Services
   # using activation scripts
   system.activationScripts = {
-      create-folders = {
-        text = ''mkdir -p /data/Adam/Drive
-                 chown -R syncthing /data/Adam/Drive
-                 [ ! -L /data/Adam/Photos ] && ln -s /data/Adam/Services/immich/library/admin /data/Adam/Photos
-                 mkdir -p /data/Adam/Services/immich'';
+    create-folders = {
+      text = ''
+        mkdir -p /data/Adam/Drive
+        chown -R syncthing /data/Adam/Drive
+        mkdir -p /data/Adam/Services/immich
+        [ ! -L /data/Adam/Photos ] && ln -s /data/Adam/Services/immich/library/admin /data/Adam/Photos'';
     };
-  };  
+  };
+
+  services.borgbackup.jobs.adam = {
+    paths = [ "/data/Adam" ];
+    repo = "ssh://ryloth@scarif/mnt/zfs-2024-09-08/backup2/Adam";
+    compression = "zstd,3";
+    encryption.mode = "none";
+    prune.keep = {
+      within = "1d"; # Keep all backups from the last 24 hours
+      daily = 7; # Keep the last backup for each day for 7 days
+      weekly = 4; # Keep the last backup for each week for 4 weeks
+      monthly = 6; # Keep the last backup for each month for 6 months
+      yearly = 1; # Keep the last backup for each year for 1 year
+    };
+  };
 }
