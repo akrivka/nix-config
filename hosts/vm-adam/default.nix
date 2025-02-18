@@ -53,4 +53,11 @@
       yearly = 1; # Keep the last backup for each year for 1 year
     };
   };
+
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 }
