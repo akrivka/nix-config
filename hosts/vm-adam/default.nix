@@ -18,6 +18,7 @@
     ./services/syncthing.nix
     ./services/anki-sync-server.nix
     ./services/home-assistant.nix
+    ./services/mealie.nix
     #./services/gitea.nix
   ];
 
