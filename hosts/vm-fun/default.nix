@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
   ];
 
-  system.stateVersion = lib.mkDefault "24.11";  
+  system.stateVersion = lib.mkDefault "24.11";
 
   #Provide a default hostname
   networking = {
@@ -43,7 +43,43 @@
     '';
 
     virtualHosts."http://jellyfin.fun".extraConfig = ''
-    reverse_proxy :8096
+      reverse_proxy :8096
+    '';
+
+    virtualHosts."http://transmission.fun".extraConfig = ''
+      reverse_proxy :9091
+    '';
+
+    virtualHosts."http://bazarr.fun".extraConfig = ''
+      reverse_proxy :6767
+    '';
+
+    virtualHosts."http://sonarr.fun".extraConfig = ''
+      reverse_proxy :8989
+    '';
+
+    virtualHosts."http://radarr.fun".extraConfig = ''
+      reverse_proxy :7878
+    '';
+
+    virtualHosts."http://prowlarr.fun".extraConfig = ''
+      reverse_proxy :9696
+    '';
+
+    virtualHosts."http://readarr.fun".extraConfig = ''
+      reverse_proxy :8787
+    '';
+
+    virtualHosts."http://lidarr.fun".extraConfig = ''
+      reverse_proxy :8686
+    '';
+
+    virtualHosts."http://jellyseerr.fun".extraConfig = ''
+      reverse_proxy :5055
     '';
   };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+  ];
 }
