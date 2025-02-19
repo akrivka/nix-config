@@ -35,6 +35,10 @@
     jellyseerr.enable = true;
   };
 
+  services.flaresolverr = {
+    enable = true;
+  }
+
   services.caddy = {
     enable = true;
 
@@ -76,6 +80,10 @@
 
     virtualHosts."http://jellyseerr.fun".extraConfig = ''
       reverse_proxy :5055
+    '';
+
+    virtualHosts."http://flaresolverr.fun".extraConfig = ''
+      reverse_proxy :8191
     '';
   };
 
