@@ -6,6 +6,11 @@
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,26 +23,32 @@
   };
 
   outputs =
-    { self, nixpkgs, nixarr, ... }@inputs:
+    { self, nixpkgs, nixarr, nix-darwin, ... }@inputs:
     {
       nixosConfigurations = {
 
         nix-test = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/vm-test ];
+          modules = [ ./hosts/vms/vm-test ];
         };
 
         vm-adam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/vm-adam ];
+          modules = [ ./hosts/vms/vm-adam ];
         };
 
         vm-fun = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ 
-            ./hosts/vm-fun 
+            ./hosts/vms/vm-fun 
             nixarr.nixosModules.default
           ];
+        };
+      };
+
+      darwinConfigurations = {
+        adam-macbook = nix-darwin.lib.darwinSystem {
+          modules = [ ./hosts/macos/adam-macbook ];
         };
       };
     };
