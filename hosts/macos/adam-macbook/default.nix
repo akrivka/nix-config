@@ -1,10 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  nix.enable = false;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [ pkgs.vim
+    with pkgs; [ 
+      vim
+      git
+      python3
     ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
