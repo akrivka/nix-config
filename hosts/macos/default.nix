@@ -15,7 +15,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
 
   # Enable flakes
   nix.settings.experimental-features = "nix-command flakes";
@@ -51,6 +51,8 @@
   # Define the existing macOS user so that Home-Manager can infer the correct
   # home directory path (required for the `home.homeDirectory` option).
   users.users.adam.home = "/Users/adam";
+  # Make Fish the default login shell for the user.
+  users.users.adam.shell = pkgs.fish;
 
 
   # TO PLAY WITH LATER
