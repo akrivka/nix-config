@@ -26,3 +26,15 @@
 1. configure network from Proxmox
 2. run this to enable VSCode server
     `systemctl --user enable auto-fix-vscode-server.service`
+
+## Steps to set up a new Macbook
+
+1. Install nix using the graphical Determinate systems installer https://docs.determinate.systems/determinate-nix/
+2. Install `nix-darwin` using something like this:
+
+```
+sudo nix run github:lnl7/nix-darwin#darwin-rebuild -- switch \
+  --flake /Users/adam/personal/nix-config#aisle-macbook
+  ```
+
+  

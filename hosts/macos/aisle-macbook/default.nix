@@ -2,17 +2,22 @@
 {
   imports = [ ../default.nix ];
 
-  # Add personal MacBook specific configuration here
-    homebrew = {
+  # Install AISLE specific packages via homebrew
+  homebrew = {
     casks = [
-      "discord"
+      "cursor"
+      "orbstack"
+      "notion"
+      "slack"
     ];
     brews = [
       "git"
       "node"
       "pnpm"
       "python@3.13"
+      "rustup"
       "uv"
+      "dbmate"
     ];
   };
 } 

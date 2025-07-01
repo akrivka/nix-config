@@ -50,6 +50,9 @@
         adam-macbook = nix-darwin.lib.darwinSystem {
           modules = [ ./hosts/macos/adam-macbook ];
         };
+        aisle-macbook = nix-darwin.lib.darwinSystem {
+          modules = [ ./hosts/macos/aisle-macbook ];
+        };
       };
     };
 }
