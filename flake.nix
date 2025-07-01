@@ -23,7 +23,7 @@
   };
 
   outputs =
-    { self, nixpkgs, nixarr, nix-darwin, ... }@inputs:
+    { self, nixpkgs, nixarr, nix-darwin, home-manager, ... }@inputs:
     {
       nixosConfigurations = {
 
@@ -48,10 +48,30 @@
 
       darwinConfigurations = {
         adam-macbook = nix-darwin.lib.darwinSystem {
-          modules = [ ./hosts/macos/adam-macbook ];
+          modules = [
+            ./hosts/macos/adam-macbook
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              # Home-Manager configuration for the primary user.
+              home-manager.users.adam = import ./users/adam/darwin.nix;
+            }
+          ];
         };
         aisle-macbook = nix-darwin.lib.darwinSystem {
-          modules = [ ./hosts/macos/aisle-macbook ];
+          modules = [
+            ./hosts/macos/aisle-macbook
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              # Re-use the same user configuration on the AISLE MacBook.
+              home-manager.users.adam = import ./users/adam/darwin.nix;
+            }
+          ];
         };
       };
     };

@@ -27,13 +27,25 @@
       "betterdisplay"
       "firefox"
       "ghostty"
+      "marta"
+      "spotify"
       "raycast"
       "visual-studio-code"
       "bitwarden"
+      "karabiner-elements"
     ];
+    onActivation.autoUpdate = true;
+    onActivation.cleanup = "zap";
+    global.brewfile = true;
   };
+
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
+
+  # Define the existing macOS user so that Home-Manager can infer the correct
+  # home directory path (required for the `home.homeDirectory` option).
+  users.users.adam.home = "/Users/adam";
 }
