@@ -39,6 +39,10 @@
   # Make sure Fish is configured for the user and starship is initialized.
   programs.fish = {
     enable = true;
+    shellAliases = {
+      ls = "eza";
+      cat = "bat";
+    };
     interactiveShellInit = ''
       # Initialize the Starship prompt.
       starship init fish | source

@@ -10,6 +10,8 @@
       neovim
       git
       python3
+      eza
+      bat
     ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
