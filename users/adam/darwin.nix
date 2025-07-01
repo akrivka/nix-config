@@ -42,6 +42,7 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
+      du = "dust";
     };
     interactiveShellInit = ''
       # Initialize the Starship prompt.

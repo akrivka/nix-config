@@ -12,6 +12,7 @@
       python3
       eza
       bat
+      dust
     ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
