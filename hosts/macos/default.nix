@@ -57,7 +57,7 @@
   system.defaults.NSGlobalDomain = {
     # ACTUALLY IMPORTANT STUFF
     "com.apple.swipescrolldirection" = false;
-    "com.apple.trackpad.scaling" = 1.5;
+    "com.apple.trackpad.scaling" = 1.3;
     InitialKeyRepeat = 15;
     KeyRepeat = 2;
 
