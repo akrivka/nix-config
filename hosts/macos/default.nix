@@ -33,10 +33,13 @@
       "visual-studio-code"
       "bitwarden"
       "karabiner-elements"
+      # i3-like tiling window manager for macOS
+      "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
     onActivation.cleanup = "zap";
     global.brewfile = true;
+    taps = [ "nikitabobko/tap" ];
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;

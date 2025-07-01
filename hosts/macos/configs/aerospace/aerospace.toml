@@ -1,0 +1,49 @@
+# Basic AeroSpace configuration placed under nix-config
+# This file will be copied to ~/.config/aerospace/aerospace.toml by Home-Manager
+# It enables AeroSpace on login and provides a handful of sensible defaults.
+
+# Launch AeroSpace automatically when the user logs in
+start-at-login = true
+
+# Default layout and orientation
+accordion-padding               = 0
+default-root-container-layout   = 'tiles'
+default-root-container-orientation = 'auto'
+
+# A small amount of gaps between windows and screen edges
+[gaps]
+inner.horizontal = 6
+inner.vertical   = 6
+outer.left        = 6
+outer.right       = 6
+outer.top         = 6
+outer.bottom      = 6
+
+# Key bindings – Vim-style navigation, i3-inspired modifiers (alt)
+[mode.main.binding]
+# Change focus
+alt-j = 'focus left'
+alt-k = 'focus down'
+alt-i = 'focus up'
+alt-l = 'focus right'
+# Move windows
+alt-shift-j = 'move left'
+alt-shift-k = 'move down'
+alt-shift-i = 'move up'
+alt-shift-l = 'move right'
+# Resize current container
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+# Quick layout toggle
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+# Workspace helpers
+alt-tab = 'workspace-back-and-forth'
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4' 

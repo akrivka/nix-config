@@ -9,6 +9,9 @@
   # Expose Karabiner config from repository into ~/.config/karabiner.
   xdg.configFile."karabiner/karabiner.json".source = ../../hosts/macos/configs/karabiner/karabiner.json;
 
+  # Expose Aerospace config into ~/.config/aerospace.
+  xdg.configFile."aerospace/aerospace.toml".source = ../../hosts/macos/configs/aerospace/aerospace.toml;
+
   # Optionally, include additional user packages.
   home.packages = [ ];
 } 
