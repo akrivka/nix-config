@@ -14,6 +14,7 @@
       "git"
       "node"
       "pnpm"
+      "yarn"
       "python@3.13"
       "rustup"
       "uv"
