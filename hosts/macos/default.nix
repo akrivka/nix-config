@@ -40,8 +40,8 @@
       "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
-    onActivation.cleanup = "zap";
-    global.brewfile = true;
+    #onActivation.cleanup = "zap";
+    #global.brewfile = true;
     taps = [ "nikitabobko/tap" ];
   };
 

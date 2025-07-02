@@ -44,7 +44,19 @@
       cat = "bat";
       du = "dust";
     };
+    # Initialize Homebrew environment variables for both login and interactive shells.
+    loginShellInit = ''
+      if test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+      end
+    '';
+
     interactiveShellInit = ''
+      # Initialize Homebrew environment variables.
+      if test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+      end
+
       # Initialize the Starship prompt.
       starship init fish | source
     '';
