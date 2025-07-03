@@ -6,6 +6,7 @@
     homebrew = {
     casks = [
       "discord"
+      "cursor"
     ];
     brews = [
       "git"
@@ -14,5 +15,8 @@
       "python@3.13"
       "uv"
     ];
+    masApps = {
+      WireGuard = 1451685025;
+    };
   };
 } 

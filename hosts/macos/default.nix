@@ -26,6 +26,9 @@
   # Enable Homebrew (all macOS hosts can extend this in their own configs)
   homebrew = {
     enable = true;
+    brews = [
+      "imagemagick"
+    ];
     casks = [
       "betterdisplay"
       "firefox"
@@ -36,6 +39,8 @@
       "visual-studio-code"
       "bitwarden"
       "karabiner-elements"
+      "notion"
+      "slack"
       # i3-like tiling window manager for macOS
       "nikitabobko/tap/aerospace"
     ];
