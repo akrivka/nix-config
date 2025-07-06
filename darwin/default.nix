@@ -70,6 +70,9 @@
   users.users.adam.uid = 501;
   users.knownUsers = [ "adam" ];
 
+  # Set the primary user for the system
+  system.primaryUser = "adam";
+
 
   # TO PLAY WITH LATER
   system.defaults.NSGlobalDomain = {
