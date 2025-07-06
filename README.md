@@ -2,14 +2,20 @@
 
 ## TODOs
 
-[] Set up home-manager
-[] Switch `nixos-vscode-server` to Flakes (`fetchTarball` in `common/default.nix` triggers an issue if not building with `--impure`)
-[] Move anki-sync-server to /data/Adam
+- [] Set up home-manager
+
+- [] Switch `nixos-vscode-server` to Flakes (`fetchTarball` in `common/default.nix` triggers an issue if not building with `--impure`)
+
+- [] Move anki-sync-server to /data/Adam
     - current problem is that the anki-sync-server package 
     runs under a dynamic user, which doesn't have permission to write to that folder
         - the solutions are either to symlink/hardlink from /var/lib/anki-sync-server... but then this symlink will need to be handled differently from the Photos symlink
         - make a fork to the anki-sync-server module
             - could also submit a pull request
+
+- [] Migrate Marta config to the `nix-darwin`
+
+- [] Split karabiner-elements config for `adam-macbook` and `aisle-macbook` (different keyboard layouts)
 
 ## Steps to create a new NixOS VM on Ryloth Proxmox from scrath
 
@@ -37,4 +43,8 @@ sudo nix run github:lnl7/nix-darwin#darwin-rebuild -- switch \
   --flake /Users/adam/personal/nix-config#aisle-macbook
   ```
 
-  
+3. Set up BitWarden manually (including SSH agent)
+
+4. Set up WireGuard manually (just copy peer config from BitWarden)
+
+5. Set up Syncthing manually (just add the devices and share the folder)
