@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ../default.nix ];
+  imports = [ ../../default.nix ];
 
   # Add personal MacBook specific configuration here
     homebrew = {

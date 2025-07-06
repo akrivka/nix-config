@@ -6,7 +6,7 @@ rebuild:
 
 deploy machine ip='':
   #!/usr/bin/env sh
-  if [ {{machine}} = "macos" ]; then
+  if [ {{machine}} = "darwin" ]; then
     darwin-rebuild switch --flake .
   elif [ -z "{{ip}}" ]; then
     sudo nixos-rebuild switch --fast --impure --flake ".#{{machine}}"
@@ -21,7 +21,7 @@ send destination:
   ssh {{destination}} 'mkdir -p ~/nix-config && tar -xzf ~/nix-config/archive.tar.gz -C ~/nix-config && rm ~/nix-config/archive.tar.gz'
   rm archive.tar.gz
 
-up:
+update:
   nix flake update
 
 lint:
@@ -32,14 +32,3 @@ gc:
 
 repair:
   sudo nix-store --verify --check-contents --repair
-
-sopsedit:
-  sops secrets/secrets.yaml
-
-sopsrotate:
-  for file in secrets/*; do sops --rotate --in-place "$file"; done
-  
-sopsupdate:
-  for file in secrets/*; do sops updatekeys "$file"; done
-
-build-iso:

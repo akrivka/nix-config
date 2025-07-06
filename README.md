@@ -3,7 +3,7 @@
 ## TODOs
 
 [] Set up home-manager
-[] Switch `nixos-vscode-server` to Flakes (`fetchTarball` in `hosts/common/default.nix` triggers an issue if not building with `--impure`)
+[] Switch `nixos-vscode-server` to Flakes (`fetchTarball` in `common/default.nix` triggers an issue if not building with `--impure`)
 [] Move anki-sync-server to /data/Adam
     - current problem is that the anki-sync-server package 
     runs under a dynamic user, which doesn't have permission to write to that folder

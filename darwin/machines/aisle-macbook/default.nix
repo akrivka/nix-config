@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ../default.nix ];
+  imports = [ ../../default.nix ];
 
   # Install AISLE specific packages via homebrew
   homebrew = {
