@@ -91,6 +91,13 @@
     80
   ];
 
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Automatically apply system upgrades once per day
   system.autoUpgrade = {
     enable = true;
