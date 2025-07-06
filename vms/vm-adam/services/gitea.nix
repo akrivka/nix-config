@@ -15,7 +15,7 @@ in
     stateDir = "/home/adam/Adam/Services/gitea";
   };
 
-  services.caddy.virtualHosts."http://git.adam2".extraConfig = ''
+  services.caddy.virtualHosts."http://git.adam".extraConfig = ''
     reverse_proxy :${toString port}
   '';
 }

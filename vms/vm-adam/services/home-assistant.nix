@@ -15,7 +15,7 @@ in
     };
   };
 
-  services.caddy.virtualHosts."http://ha.adam2".extraConfig = ''
+  services.caddy.virtualHosts."http://ha.adam".extraConfig = ''
     reverse_proxy http://[::1]:${toString port}
   '';
 

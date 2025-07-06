@@ -21,7 +21,7 @@ in
     ];
   };
 
-  services.caddy.virtualHosts."http://anki.adam2".extraConfig = ''
+  services.caddy.virtualHosts."http://anki.adam".extraConfig = ''
     reverse_proxy http://[::1]:${toString port}
   '';
 

@@ -30,7 +30,7 @@ in
     };
   };
 
-  services.caddy.virtualHosts."http://syncthing.adam2".extraConfig = ''
+  services.caddy.virtualHosts."http://syncthing.adam".extraConfig = ''
     reverse_proxy :${toString port}
   '';
 }

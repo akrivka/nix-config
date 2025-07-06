@@ -15,7 +15,7 @@ in
     settings = { };
   };
 
-  services.caddy.virtualHosts."http://mealie.adam2".extraConfig = ''
+  services.caddy.virtualHosts."http://mealie.adam".extraConfig = ''
     reverse_proxy :${toString port}
   '';
 }
