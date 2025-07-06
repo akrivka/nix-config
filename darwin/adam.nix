@@ -49,6 +49,9 @@
       if test -x /opt/homebrew/bin/brew
         eval (/opt/homebrew/bin/brew shellenv)
       end
+      
+      # Set SSH_AUTH_SOCK for Bitwarden SSH agent
+      set -gx SSH_AUTH_SOCK /Users/adam/.bitwarden-ssh-agent.sock
     '';
 
     interactiveShellInit = ''
@@ -56,6 +59,9 @@
       if test -x /opt/homebrew/bin/brew
         eval (/opt/homebrew/bin/brew shellenv)
       end
+
+      # Set SSH_AUTH_SOCK for Bitwarden SSH agent
+      set -gx SSH_AUTH_SOCK /Users/adam/.bitwarden-ssh-agent.sock
 
       # Initialize the Starship prompt.
       starship init fish | source
