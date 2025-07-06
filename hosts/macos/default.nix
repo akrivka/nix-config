@@ -14,6 +14,12 @@
       bat
       dust
     ];
+    
+  environment.shells = with pkgs; [
+    bashInteractive
+    fish
+    zsh
+  ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -61,6 +67,8 @@
   users.users.adam.home = "/Users/adam";
   # Make Fish the default login shell for the user.
   users.users.adam.shell = pkgs.fish;
+  users.users.adam.uid = 501;
+  users.knownUsers = [ "adam" ];
 
 
   # TO PLAY WITH LATER
