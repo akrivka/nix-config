@@ -90,4 +90,17 @@
   networking.firewall.allowedTCPPorts = [
     80
   ];
+
+  # Automatically apply system upgrades once per day
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/etc/nixos#vm-fun"; # build this host's flake every upgrade
+    flags = [
+      "--update-input" "nixpkgs"   # pull latest nixpkgs revision
+      "--no-write-lock-file"        # don't commit lock file changes
+      "-L"                          # print build logs
+    ];
+    dates = "02:00";               # run daily at 02:00
+    randomizedDelaySec = "45min";  # spread load when multiple machines upgrade
+  };
 }

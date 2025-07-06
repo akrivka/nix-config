@@ -15,6 +15,7 @@
 
     ./services/caddy.nix
     ./services/immich.nix
+    ./services/paperless-ngx.nix
     ./services/syncthing.nix
     ./services/anki-sync-server.nix
     ./services/home-assistant.nix
@@ -62,5 +63,18 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 30d";
+  };
+
+  # Automatically apply system upgrades once per day
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/etc/nixos#vm-adam"; # build this host's flake every upgrade
+    flags = [
+      "--update-input" "nixpkgs"   # pull latest nixpkgs revision
+      "--no-write-lock-file"        # don't commit lock file changes
+      "-L"                          # print build logs
+    ];
+    dates = "02:00";               # run daily at 02:00
+    randomizedDelaySec = "45min";  # spread load when multiple machines upgrade
   };
 }
