@@ -9,12 +9,12 @@ let
   port = 8000;
 in
 {
-  services.paperless-ngx = {
+  services.paperless = {
     enable = true;
     port = port;
   };
 
-  services.caddy.virtualHosts."http://paperless-ngx.adam".extraConfig = ''
+  services.caddy.virtualHosts."http://paperless.adam".extraConfig = ''
     reverse_proxy http://[::1]:${toString port}
   '';
 }
