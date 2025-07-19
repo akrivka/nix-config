@@ -7,6 +7,7 @@
     casks = [
       "discord"
       "cursor"
+      "orbstack"
     ];
     brews = [
       "git"
@@ -14,6 +15,7 @@
       "pnpm"
       "python@3.13"
       "uv"
+      "gh"
     ];
     masApps = {
       WireGuard = 1451685025;
