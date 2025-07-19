@@ -48,7 +48,7 @@
       "notion"
       "slack"
       # i3-like tiling window manager for macOS
-      "nikitabobko/tap/aerospace"
+      # "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
     #onActivation.cleanup = "zap";
