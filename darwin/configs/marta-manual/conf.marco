@@ -1,0 +1,8 @@
+behavior {
+    theme "Kon"
+}
+
+keyBindings {
+    "Right" "core.open"
+    "Left" "core.go.up"
+}

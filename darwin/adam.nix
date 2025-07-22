@@ -12,6 +12,9 @@
   # Expose Aerospace config into ~/.config/aerospace.
   xdg.configFile."aerospace/aerospace.toml".source = ./configs/aerospace/aerospace.toml;
 
+  # Expose Marta config to Library/Application Support.
+  home.file."Library/Application Support/org.yanex.marta/conf.marco".source = ./configs/marta-manual/conf.marco;
+
   # Optionally, include additional user packages.
   home.packages = [ ];
 
