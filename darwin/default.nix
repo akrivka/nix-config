@@ -1,20 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   nix.enable = false;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    with pkgs; [ 
-      neovim
-      git
-      python3
-      eza
-      bat
-      dust
-    ];
-    
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    python3
+    eza
+    bat
+    dust
+    nixd
+    nil
+  ];
+
   environment.shells = with pkgs; [
     bashInteractive
     fish
@@ -72,7 +73,6 @@
 
   # Set the primary user for the system
   system.primaryUser = "adam";
-
 
   # TO PLAY WITH LATER
   system.defaults.NSGlobalDomain = {
