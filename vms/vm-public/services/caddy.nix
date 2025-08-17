@@ -9,6 +9,10 @@
   services.caddy = {
     enable = true;
 
+    virtualHosts.":80".extraConfig = ''
+      respond "Hello from vm-public"
+    '';
+
     virtualHosts."cmg.akrivka.com" = {
       extraConfig = ''
         root * /var/www/cmg.akrivka.com
