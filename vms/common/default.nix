@@ -13,14 +13,22 @@
   ];
 
   # Allow remote updates with flakes and non-root users
-  nix.settings.trusted-users = [
-    "root"
-    "@wheel"
-  ];
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = { 
+    substituters = [
+      "https://adam-cache.cachix.org"
+    ];
+    trusted-public-keys = [
+      "adam-cache.cachix.org-1:BXUDoC85M8jHPYkbNpiSUD6XIF3O58XgPk6szwNghKA="
+    ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   # Don't ask for passwords
   security.sudo.wheelNeedsPassword = false;
