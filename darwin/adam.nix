@@ -7,7 +7,7 @@
   home.stateVersion = "23.11";
 
   # Expose Karabiner config from repository into ~/.config/karabiner.
-  xdg.configFile."karabiner/karabiner.json".source = ./configs/karabiner/karabiner.json;
+  xdg.configFile."karabiner".source = ./configs/karabiner;
 
   # Expose Aerospace config into ~/.config/aerospace.
   xdg.configFile."aerospace/aerospace.toml".source = ./configs/aerospace/aerospace.toml;
