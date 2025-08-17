@@ -13,7 +13,7 @@
       respond "Hello from vm-public"
     '';
 
-    virtualHosts."cmg.akrivka.com" = {
+    virtualHosts."http://cmg.akrivka.com" = {
       extraConfig = ''
         root * /var/www/cmg.akrivka.com
         file_server
