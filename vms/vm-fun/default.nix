@@ -101,7 +101,7 @@
   # Automatically apply system upgrades once per day
   system.autoUpgrade = {
     enable = true;
-    flake = "/etc/nixos#vm-fun"; # build this host's flake every upgrade
+    flake = "/root/nix-config#vm-fun"; # build this host's flake every upgrade
     flags = [
       "--update-input" "nixpkgs"   # pull latest nixpkgs revision
       "--no-write-lock-file"        # don't commit lock file changes
