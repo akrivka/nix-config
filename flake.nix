@@ -44,6 +44,14 @@
             nixarr.nixosModules.default
           ];
         };
+
+        vm-public = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ 
+            ./vms/vm-public 
+            nixarr.nixosModules.default
+          ];
+        };
       };
 
       darwinConfigurations = {
