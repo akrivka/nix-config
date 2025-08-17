@@ -51,6 +51,7 @@
     git # for pulling nix flakes
     nixfmt-rfc-style # for formatting in SSH sessions
     just
+    rsync
   ];
 
   # Enable VSCode server for all VMs
