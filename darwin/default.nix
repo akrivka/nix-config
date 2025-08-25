@@ -14,6 +14,7 @@
     dust
     nixd
     nil
+    nixfmt
   ];
 
   environment.shells = with pkgs; [

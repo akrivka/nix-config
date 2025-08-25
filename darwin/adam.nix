@@ -6,9 +6,6 @@
   # Keep this in sync with your current Home-Manager version.
   home.stateVersion = "23.11";
 
-  # Expose Karabiner config from repository into ~/.config/karabiner.
-  xdg.configFile."karabiner".source = ./configs/karabiner;
-
   # Expose Aerospace config into ~/.config/aerospace.
   xdg.configFile."aerospace/aerospace.toml".source = ./configs/aerospace/aerospace.toml;
 

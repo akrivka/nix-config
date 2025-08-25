@@ -14,6 +14,7 @@
       "orbstack"
       "notion"
       "slack"
+      "gcloud-cli"
     ];
     brews = [
       "git"
@@ -24,7 +25,6 @@
       "rustup"
       "uv"
       "dbmate"
-      "gcloud-cli"
       "awscli"
       "postgresql@17"
     ];
