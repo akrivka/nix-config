@@ -13,7 +13,7 @@
   ];
 
   # Allow remote updates with flakes and non-root users
-  nix.settings = { 
+  nix.settings = {
     substituters = [
       "https://adam-cache.cachix.org"
     ];
@@ -29,6 +29,8 @@
       "flakes"
     ];
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Don't ask for passwords
   security.sudo.wheelNeedsPassword = false;

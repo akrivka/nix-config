@@ -24,6 +24,7 @@
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
 
   # Enable alternative shell support in nix-darwin.
   programs.fish.enable = true;
