@@ -2,6 +2,11 @@
 {
   imports = [ ../../default.nix ];
 
+  environment.variables = {
+    AWS_PROFILE = "aisle-playground";
+    AWS_REGION = "eu-west-1";
+  };
+
   # Install AISLE specific packages via homebrew
   homebrew = {
     casks = [
@@ -19,6 +24,9 @@
       "rustup"
       "uv"
       "dbmate"
+      "gcloud-cli"
+      "awscli"
+      "postgresql@17"
     ];
   };
-} 
+}

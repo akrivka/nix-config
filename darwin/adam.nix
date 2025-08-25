@@ -47,6 +47,12 @@
       cat = "bat";
       du = "dust";
     };
+    shellInit = ''
+      # Ensure ~/.local/bin is on PATH (append to avoid shadowing Homebrew)
+      if test -d "$HOME/.local/bin"
+        fish_add_path -a -g "$HOME/.local/bin"
+      end
+    '';
     # Initialize Homebrew environment variables for both login and interactive shells.
     loginShellInit = ''
       if test -x /opt/homebrew/bin/brew
