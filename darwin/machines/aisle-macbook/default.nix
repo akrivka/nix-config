@@ -7,6 +7,10 @@
     AWS_REGION = "eu-west-1";
   };
 
+  environment.systemPackages = with pkgs; [
+    claude-code
+  ];
+
   # Install AISLE specific packages via homebrew
   homebrew = {
     casks = [
@@ -21,6 +25,8 @@
       "dbmate"
       "awscli"
       "postgresql@17"
+      "codex"
+      "gemini-cli"
     ];
   };
 }
