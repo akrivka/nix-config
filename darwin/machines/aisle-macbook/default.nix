@@ -17,13 +17,7 @@
       "gcloud-cli"
     ];
     brews = [
-      "git"
-      "node"
-      "pnpm"
-      "yarn"
-      "python@3.13"
       "rustup"
-      "uv"
       "dbmate"
       "awscli"
       "postgresql@17"

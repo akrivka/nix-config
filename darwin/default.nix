@@ -36,6 +36,13 @@
     enable = true;
     brews = [
       "imagemagick"
+      "git"
+      "node"
+      "pnpm"
+      "python@3.13"
+      "uv"
+      "gh"
+      "ripgrep"
     ];
     casks = [
       "betterdisplay"
@@ -53,8 +60,8 @@
       # "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
-    #onActivation.cleanup = "zap";
-    #global.brewfile = true;
+    onActivation.cleanup = "zap";
+    global.brewfile = true;
     taps = [ "nikitabobko/tap" ];
   };
 

@@ -3,5 +3,5 @@
   imports = [ ../../adam.nix ];
 
   # Expose Karabiner config from repository into ~/.config/karabiner.
-  xdg.configFile."karabiner/karabiner.json".source = ./configs/karabiner/karabiner-ansi.json;
-} 
+  xdg.configFile."karabiner".source = ./configs/karabiner-ansi;
+}
