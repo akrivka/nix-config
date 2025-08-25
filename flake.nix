@@ -23,7 +23,14 @@
   };
 
   outputs =
-    { self, nixpkgs, nixarr, nix-darwin, home-manager, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      nixarr,
+      nix-darwin,
+      home-manager,
+      ...
+    }@inputs:
     {
       nixosConfigurations = {
 
@@ -39,16 +46,16 @@
 
         vm-fun = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ 
-            ./vms/vm-fun 
+          modules = [
+            ./vms/vm-fun
             nixarr.nixosModules.default
           ];
         };
 
         vm-public = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ 
-            ./vms/vm-public 
+          modules = [
+            ./vms/vm-public
             nixarr.nixosModules.default
           ];
         };
@@ -65,7 +72,7 @@
 
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.adam = import ./darwin/adam.nix;
+              home-manager.users.adam = import ./darwin/machines/adam-macbook/adam.nix;
             }
           ];
         };
@@ -79,7 +86,7 @@
 
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.adam = import ./darwin/adam.nix;
+              home-manager.users.adam = import ./darwin/machines/aisle-macbook/adam.nix;
             }
           ];
         };
