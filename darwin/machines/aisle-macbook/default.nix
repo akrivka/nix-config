@@ -19,6 +19,7 @@
       "notion"
       "slack"
       "gcloud-cli"
+      "linear-linear"
     ];
     brews = [
       "rustup"
