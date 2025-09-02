@@ -40,6 +40,7 @@
       "git"
       "node"
       "pnpm"
+      "yarn"
       "python@3.13"
       "uv"
       "gh"
@@ -61,6 +62,7 @@
       # "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
+    onActivation.upgrade = true;
     onActivation.cleanup = "zap";
     global.brewfile = true;
     taps = [ "nikitabobko/tap" ];
