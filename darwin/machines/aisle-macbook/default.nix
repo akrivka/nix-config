@@ -28,6 +28,7 @@
       "postgresql@17"
       "codex"
       "gemini-cli"
+      "libpq"
     ];
   };
 }

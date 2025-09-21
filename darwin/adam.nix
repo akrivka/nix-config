@@ -49,6 +49,7 @@
       if test -d "$HOME/.local/bin"
         fish_add_path -a -g "$HOME/.local/bin"
       end
+      fish_add_path -a -g /opt/homebrew/opt/libpq/bin
     '';
     # Initialize Homebrew environment variables for both login and interactive shells.
     loginShellInit = ''
