@@ -11,7 +11,7 @@ in
     enable = true;
     port = port;
     storageLocation = "/data/Adam/Services/linkwarden";
-    environmentFile = ./linkwarden.env;
+    environmentFile = "./linkwarden.env";
   };
 
   # Caddy reverse proxy for local domain
