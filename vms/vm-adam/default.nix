@@ -21,9 +21,10 @@
     ./services/home-assistant.nix
     #./services/mealie.nix
     #./services/gitea.nix
+    ./services/linkwarden.nix
   ];
 
-  # DO NOT CHANGE THIS!!! 
+  # DO NOT CHANGE THIS!!!
   # https://search.nixos.org/options?channel=unstable&show=system.stateVersion&from=0&size=50&sort=relevance&type=packages&query=system.stateVersion
   system.stateVersion = lib.mkDefault "24.11";
 
@@ -70,11 +71,12 @@
     enable = true;
     flake = "/root/nix-config#vm-adam"; # build this host's flake every upgrade
     flags = [
-      "--update-input" "nixpkgs"   # pull latest nixpkgs revision
-      "--no-write-lock-file"        # don't commit lock file changes
-      "-L"                          # print build logs
+      "--update-input"
+      "nixpkgs" # pull latest nixpkgs revision
+      "--no-write-lock-file" # don't commit lock file changes
+      "-L" # print build logs
     ];
-    dates = "02:00";               # run daily at 02:00
-    randomizedDelaySec = "45min";  # spread load when multiple machines upgrade
+    dates = "02:00"; # run daily at 02:00
+    randomizedDelaySec = "45min"; # spread load when multiple machines upgrade
   };
 }
