@@ -17,7 +17,6 @@
     ./services/home-assistant.nix
     #./services/mealie.nix
     #./services/gitea.nix
-    ./services/linkwarden.nix
   ];
 
   # DO NOT CHANGE THIS!!!
