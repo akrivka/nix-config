@@ -64,7 +64,7 @@
       darwinConfigurations = {
         adam-macbook = nix-darwin.lib.darwinSystem {
           modules = [
-            ./darwin/machines/adam-macbook
+            ./macos/machines/adam-macbook
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -72,13 +72,13 @@
 
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.adam = import ./darwin/machines/adam-macbook/adam.nix;
+              home-manager.users.adam = import ./macos/machines/adam-macbook/adam.nix;
             }
           ];
         };
         aisle-macbook = nix-darwin.lib.darwinSystem {
           modules = [
-            ./darwin/machines/aisle-macbook
+            ./macos/machines/aisle-macbook
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -86,7 +86,7 @@
 
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.adam = import ./darwin/machines/aisle-macbook/adam.nix;
+              home-manager.users.adam = import ./macos/machines/aisle-macbook/adam.nix;
             }
           ];
         };
