@@ -5,4 +5,11 @@ behavior {
 keyBindings {
     "Right" "core.open"
     "Left" "core.go.up"
+    "Ctrl+d" "core.delete"
+    "Ctrl+m" "core.move"
+    "Ctrl+r" "core.rename"
+    "Ctrl+n" "core.new.folder"
+    "Cmd+j" "core.terminal.toggle"
+    "Cmd+Up" "core.move.home"
+    "Cmd+Down" "core.move.end"
 }

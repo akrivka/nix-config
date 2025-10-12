@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   home.username = "adam";
   home.homeDirectory = "/Users/adam";
@@ -10,7 +10,8 @@
   xdg.configFile."aerospace/aerospace.toml".source = ./configs/aerospace/aerospace.toml;
 
   # Expose Marta config to Library/Application Support.
-  home.file."Library/Application Support/org.yanex.marta/conf.marco".source = ./configs/marta-manual/conf.marco;
+  home.file."Library/Application Support/org.yanex.marta/conf.marco".source =
+    ./configs/marta-manual/conf.marco;
 
   # Optionally, include additional user packages.
   home.packages = [ ];
@@ -56,7 +57,7 @@
       if test -x /opt/homebrew/bin/brew
         eval (/opt/homebrew/bin/brew shellenv)
       end
-      
+
       # Set SSH_AUTH_SOCK for Bitwarden SSH agent
       set -gx SSH_AUTH_SOCK /Users/adam/.bitwarden-ssh-agent.sock
     '';
@@ -74,4 +75,4 @@
       starship init fish | source
     '';
   };
-} 
+}
