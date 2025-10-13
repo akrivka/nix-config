@@ -73,6 +73,29 @@
 
       # Initialize the Starship prompt.
       starship init fish | source
+
+      # Git: delete merged branches
+      function gdm
+        # Fetch latest changes from the remote (optional, but keeps your branch list up-to-date)
+        git fetch -p
+
+        # Get a list of merged branches and delete them
+        # Delete merged branches using a fish loop (no xargs dependency)
+        set -l protected main master dev
+
+        # Also protect the current branch
+        set -l current (git rev-parse --abbrev-ref HEAD)
+        if test -n "$current"
+          set protected $protected $current
+        end
+
+        for b in (git for-each-ref --format='%(refname:short)' refs/heads --merged)
+          if contains -- $b $protected
+            continue
+          end
+          git branch -d -- $b
+        end
+      end
     '';
   };
 }
