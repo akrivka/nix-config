@@ -59,9 +59,12 @@
     man # manual pages
     vim # for emergencies
     git # for pulling nix flakes
-    nixfmt-rfc-style # for formatting in SSH sessions
     just
     rsync
+    nixd
+    nil
+    nixfmt
+    nixfmt-rfc-style # for formatting in SSH sessions
   ];
 
   # Enable VSCode server for all VMs
