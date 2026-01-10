@@ -141,19 +141,19 @@
     ShowPathbar = true;
   };
 
-  services.skhd = {
-    enable = true;
-    skhdConfig = ''
-      alt - z : open -a "Zed"
-      alt - s : open -a "Spotify"
-      alt - f : open -a "Firefox"
-      alt - c : open -a "Cursor"
-      alt - g : open -a "Signal"
-      alt - a : open -a "Slack"
-      alt - m : open -a "Messenger"
-      alt - d : open -a "Discord"
-      alt - w : open -a "WhatsApp"
-      alt - e : open -a "Marta"
-      alt - return : open -a "Ghostty"'';
-  };
+  # services.skhd = {
+  #   enable = true;
+  #   skhdConfig = ''
+  #     alt - z : open -a "Zed"
+  #     alt - s : open -a "Spotify"
+  #     alt - f : open -a "Firefox"
+  #     alt - c : open -a "Cursor"
+  #     alt - g : open -a "Signal"
+  #     alt - a : open -a "Slack"
+  #     alt - m : open -a "Messenger"
+  #     alt - d : open -a "Discord"
+  #     alt - w : open -a "WhatsApp"
+  #     alt - e : open -a "Marta"
+  #     alt - return : open -a "Ghostty"'';
+  # };
 }
