@@ -45,6 +45,8 @@
       "uv"
       "gh"
       "ripgrep"
+      "fzf"
+      "lazygit"
     ];
     casks = [
       "betterdisplay"

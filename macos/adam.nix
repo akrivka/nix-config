@@ -73,9 +73,9 @@
 
       # Initialize the Starship prompt.
       starship init fish | source
-
-      # Git: delete merged branches
-      function gdm
+    '';
+    functions = {
+      gdm = ''
         # Fetch latest changes from the remote (optional, but keeps your branch list up-to-date)
         git fetch -p
 
@@ -95,7 +95,85 @@
           end
           git branch -d -- $b
         end
-      end
-    '';
+        '';
+      gcb = ''
+        # If no arguments, use fzf to select branch
+        if test (count $argv) -eq 0
+            # Check if we're in a git repository first
+            if not git rev-parse --git-dir >/dev/null 2>&1
+                echo "Error: Not in a git repository"
+                return 1
+            end
+            
+            # Get list of all branches (local + remote), normalize and deduplicate
+            set -l selected_branch (git branch -a --format='%(refname:short)' | \
+                sed 's|^remotes/origin/||' | \
+                grep -v '^HEAD$' | \
+                sort -u | \
+                fzf --prompt='Select branch: ' --height=40% --reverse)
+            
+            # If no selection made (ESC pressed), exit
+            if test -z "$selected_branch"
+                return 0
+            end
+            
+            set argv[1] $selected_branch
+        else if test (count $argv) -ne 1
+            echo "Usage: gcb [branch-name]"
+            echo "  If branch-name is omitted, opens interactive branch selector"
+            return 1
+        end
+
+        set -l branch $argv[1]
+
+        # Check if we're in a git repository
+        if not git rev-parse --git-dir >/dev/null 2>&1
+            echo "Error: Not in a git repository"
+            return 1
+        end
+
+        # Get the common git directory (works for both bare repos and worktrees)
+        set -l git_common_dir (git rev-parse --git-common-dir 2>/dev/null)
+
+        # Resolve to absolute path and get parent (the repo root where worktrees live)
+        set -l repo_root (dirname (realpath "$git_common_dir"))
+
+        # Worktree path
+        set -l worktree_path "$repo_root/$branch"
+
+        # If worktree already exists, just cd to it
+        if test -d "$worktree_path"
+            echo "Worktree exists at $worktree_path"
+            cd "$worktree_path"
+            return 0
+        end
+
+        # Create parent directories if branch has slashes
+        set -l parent_dir (dirname "$worktree_path")
+        mkdir -p "$parent_dir"
+
+        # Check if branch exists (locally or remote)
+        set -l branch_exists no
+        if git show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null
+            set branch_exists yes
+        else if git show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null
+            set branch_exists yes
+        end
+
+        # Create worktree
+        if test "$branch_exists" = "yes"
+            git worktree add "$worktree_path" "$branch"
+        else
+            # Create new branch from current HEAD
+            git worktree add -b "$branch" "$worktree_path"
+        end
+
+        if test $status -eq 0
+            cd "$worktree_path"
+        else
+            return 1
+        end
+        '';  
+    };
   };
 }
