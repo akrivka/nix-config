@@ -47,6 +47,7 @@
       "ripgrep"
       "fzf"
       "lazygit"
+      "ffmpeg"
     ];
     casks = [
       "betterdisplay"
