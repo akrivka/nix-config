@@ -26,7 +26,7 @@
   environment.systemPackages = with pkgs; [
     intel-media-driver
     libva-utils
-    onevpl-intel-gpu
+    vpl-gpu-rt
   ];
 
   # nixarr
