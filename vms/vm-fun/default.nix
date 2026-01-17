@@ -20,6 +20,15 @@
     hostName = "vm-fun";
   };
 
+  hardware.opengl.enable = true;
+
+  # Intel VA-API and media drivers
+  environment.systemPackages = with pkgs; [
+    intel-media-driver
+    libva-utils
+    onevpl-intel-gpu
+  ]
+
   # nixarr
   nixarr = {
     enable = true;
@@ -33,6 +42,11 @@
     readarr.enable = true;
     lidarr.enable = true;
     jellyseerr.enable = true;
+  };
+
+  users.groups.render = {};
+  users.users.jellyfin = {
+    extraGroups = [ "render" ];
   };
 
   services.flaresolverr = {
