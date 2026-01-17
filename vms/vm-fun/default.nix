@@ -27,7 +27,7 @@
     intel-media-driver
     libva-utils
     onevpl-intel-gpu
-  ]
+  ];
 
   # nixarr
   nixarr = {
