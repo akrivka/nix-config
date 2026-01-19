@@ -64,7 +64,7 @@
     nixd
     nil
     nixfmt
-    nixfmt-rfc-style # for formatting in SSH sessions
+    cachix
   ];
 
   # Enable VSCode server for all VMs
