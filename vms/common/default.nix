@@ -15,10 +15,12 @@
   # Allow remote updates with flakes and non-root users
   nix.settings = {
     substituters = [
-      "https://adam-cache.cachix.org"
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
-      "adam-cache.cachix.org-1:BXUDoC85M8jHPYkbNpiSUD6XIF3O58XgPk6szwNghKA="
+      "cache.nixos.org-1:…"
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     trusted-users = [
       "root"
