@@ -20,6 +20,11 @@
       url = "github:rasmus-kirk/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    glider = {
+      url = "github:akrivka/glider";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +34,7 @@
       nixarr,
       nix-darwin,
       home-manager,
+      glider,
       ...
     }@inputs:
     {
@@ -41,6 +47,7 @@
 
         vm-adam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [ ./vms/vm-adam ];
         };
 

@@ -1,5 +1,6 @@
 {
   lib,
+  inputs,
   ...
 }:
 
@@ -17,6 +18,7 @@
     ./services/home-assistant.nix
     #./services/mealie.nix
     #./services/gitea.nix
+    ./services/glider.nix
   ];
 
   # DO NOT CHANGE THIS!!!
@@ -36,6 +38,7 @@
         mkdir -p /data/Adam/Drive
         chown -R syncthing /data/Adam/Drive
         mkdir -p /data/Adam/Services/immich
+        mkdir -p /data/Adam/Services/glider/secrets
         [ ! -L /data/Adam/Photos ] && ln -s /data/Adam/Services/immich/library/admin /data/Adam/Photos'';
     };
   };
