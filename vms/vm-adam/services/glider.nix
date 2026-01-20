@@ -6,7 +6,8 @@
 }:
 let
   webPort = 5173;
-  temporalUiPort = 8080;
+  temporalPort = 7233;
+  temporalUiPort = 8233; # temporal-cli UI port (port + 1000)
   surrealdbPort = 8000; # Default for services.surrealdb
 in
 {
@@ -14,58 +15,20 @@ in
 
   # ===== Shared NixOS Services =====
 
-  # PostgreSQL (for Temporal backend)
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = [
-      "temporal"
-      "temporal_visibility"
-    ];
-    ensureUsers = [
-      {
-        name = "temporal";
-        ensureDBOwnership = true;
-      }
-    ];
-  };
-
-  # Temporal server
-  services.temporal = {
-    enable = true;
-    settings = {
-      # Minimal config - uses PostgreSQL backend
-      persistence = {
-        defaultStore = "postgres-default";
-        visibilityStore = "postgres-visibility";
-        numHistoryShards = 512;
-        datastores = {
-          postgres-default = {
-            sql = {
-              pluginName = "postgres12";
-              databaseName = "temporal";
-              connectAddr = "/run/postgresql";
-              connectProtocol = "tcp";
-              user = "temporal";
-            };
-          };
-          postgres-visibility = {
-            sql = {
-              pluginName = "postgres12";
-              databaseName = "temporal_visibility";
-              connectAddr = "/run/postgresql";
-              connectProtocol = "tcp";
-              user = "temporal";
-            };
-          };
-        };
-      };
-      global.membership = {
-        maxJoinDuration = "30s";
-        broadcastAddress = "127.0.0.1";
-      };
-      services = {
-        frontend.rpc.grpcPort = 7233;
-      };
+  # Temporal dev server (using temporal-cli, same as devenv)
+  # https://devenv.sh/services/temporal/
+  systemd.services.temporal = {
+    description = "Temporal Dev Server";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.temporal-cli}/bin/temporal server start-dev --ip 127.0.0.1 --port ${toString temporalPort} --ui-port ${toString temporalUiPort} --db-filename /var/lib/temporal/temporal.db --namespace default";
+      Restart = "on-failure";
+      RestartSec = "5s";
+      StateDirectory = "temporal";
+      # Run as a dedicated user for security
+      DynamicUser = true;
     };
   };
 
@@ -102,14 +65,12 @@ in
     };
 
     temporal = {
-      address = "localhost:7233";
+      address = "localhost:${toString temporalPort}";
       taskQueue = "glider-tasks";
     };
 
-    temporalUi = {
-      enable = true;
-      port = temporalUiPort;
-    };
+    # Temporal UI is now provided by temporal-cli dev server
+    temporalUi.enable = false;
   };
 
   # ===== Caddy Reverse Proxy =====
@@ -119,7 +80,7 @@ in
       reverse_proxy http://[::1]:${toString webPort}
     '';
     "http://temporal.adam".extraConfig = ''
-      reverse_proxy http://[::1]:${toString temporalUiPort}
+      reverse_proxy http://127.0.0.1:${toString temporalUiPort}
     '';
     # SurrealDB exposed for remote Surrealist connection from laptop
     "http://surrealdb.adam".extraConfig = ''
