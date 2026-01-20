@@ -18,7 +18,7 @@
     ./services/home-assistant.nix
     #./services/mealie.nix
     #./services/gitea.nix
-    #./services/glider.nix
+    ./services/glider.nix
   ];
 
   # DO NOT CHANGE THIS!!!
