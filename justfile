@@ -2,16 +2,16 @@ default:
   just --list
 
 rebuild:
-  nixos-rebuild switch --fast --impure --flake .
+  nixos-rebuild switch --no-reexec --impure --flake .
 
 deploy machine ip='':
   #!/usr/bin/env sh
   if [ {{machine}} = "darwin" ]; then
     darwin-rebuild switch --flake .
   elif [ -z "{{ip}}" ]; then
-    sudo nixos-rebuild switch --fast --impure --flake ".#{{machine}}"
+    sudo nixos-rebuild switch --no-reexec --impure --flake ".#{{machine}}"
   else
-    nixos-rebuild switch --fast --flake ".#{{machine}}" --use-remote-sudo --target-host "eh8@{{ip}}" --build-host "eh8@{{ip}}"
+    nixos-rebuild switch --no-reexec --flake ".#{{machine}}" --use-remote-sudo --target-host "eh8@{{ip}}" --build-host "eh8@{{ip}}"
   fi
 
 send destination:
