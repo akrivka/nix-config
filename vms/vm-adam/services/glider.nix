@@ -90,8 +90,15 @@ in
     "http://temporal-ui.adam".extraConfig = ''
       reverse_proxy http://127.0.0.1:${toString temporalUiPort}
     '';
-    "http://temporal.adam".extraConfig = ''
-      reverse_proxy http://127.0.0.1:${toString temporalPort}
+    # Temporal frontend is gRPC (HTTP/2). Terminate TLS on Caddy and proxy
+    # upstream using h2c (HTTP/2 cleartext) to the local Temporal server.
+    "temporal.adam".extraConfig = ''
+      tls internal
+      reverse_proxy 127.0.0.1:${toString temporalPort} {
+        transport http {
+          versions h2c
+        }
+      }
     '';
     # SurrealDB exposed for remote Surrealist connection from laptop
     "http://surrealdb.adam".extraConfig = ''
