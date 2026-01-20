@@ -87,8 +87,11 @@ in
     "http://glider.adam".extraConfig = ''
       reverse_proxy http://0.0.0.0:${toString webPort}
     '';
-    "http://temporal.adam".extraConfig = ''
+    "http://temporal-ui.adam".extraConfig = ''
       reverse_proxy http://127.0.0.1:${toString temporalUiPort}
+    '';
+    "http://temporal.adam".extraConfig = ''
+      reverse_proxy http://127.0.0.1:${toString temporalPort}
     '';
     # SurrealDB exposed for remote Surrealist connection from laptop
     "http://surrealdb.adam".extraConfig = ''
