@@ -70,6 +70,7 @@
     tmux
     screen
     claude-code
+    uv
   ];
 
   # Enable VSCode server for all VMs
