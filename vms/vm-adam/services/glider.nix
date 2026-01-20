@@ -45,6 +45,14 @@ in
     ]; # Or use secrets
   };
 
+  # Workaround for sysinfo crate panic in LXC containers
+  # https://github.com/NixOS/nixpkgs/issues/441978
+  # SurrealDB needs /proc access to read cgroup memory limits
+  systemd.services.surrealdb.serviceConfig = {
+    ProcSubset = "all";
+    ProtectProc = "default";
+  };
+
   # ===== Glider Application =====
 
   services.glider = {
