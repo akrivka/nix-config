@@ -86,7 +86,7 @@ in
 
   services.caddy.virtualHosts = {
     "http://glider.adam".extraConfig = ''
-      reverse_proxy http://[::1]:${toString webPort}
+      reverse_proxy http://0.0.0.0:${toString webPort}
     '';
     "http://temporal.adam".extraConfig = ''
       reverse_proxy http://127.0.0.1:${toString temporalUiPort}
