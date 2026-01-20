@@ -67,6 +67,8 @@
     nil
     nixfmt
     cachix
+    tmux
+    screen
   ];
 
   # Enable VSCode server for all VMs
