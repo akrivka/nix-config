@@ -37,7 +37,7 @@ in
   services.surrealdb = {
     enable = true;
     port = surrealdbPort;
-    dbPath = "rocksdb:///var/lib/surrealdb/";
+    dbPath = "rocksdb:///data/Adam/Services/glider/surrealdb";
     extraFlags = [
       "--user"
       "root"
