@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -49,8 +50,8 @@ in
   # https://github.com/NixOS/nixpkgs/issues/441978
   # SurrealDB needs /proc access to read cgroup memory limits
   systemd.services.surrealdb.serviceConfig = {
-    ProcSubset = "all";
-    ProtectProc = "default";
+    ProcSubset = lib.mkForce "all";
+    ProtectProc = lib.mkForce "default";
   };
 
   # ===== Glider Application =====
