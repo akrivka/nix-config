@@ -69,6 +69,7 @@
     cachix
     tmux
     screen
+    claude-code
   ];
 
   # Enable VSCode server for all VMs
