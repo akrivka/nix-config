@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   webPort = 5173;
   temporalUiPort = 8080;
@@ -12,11 +17,16 @@ in
   # PostgreSQL (for Temporal backend)
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "temporal" "temporal_visibility" ];
-    ensureUsers = [{
-      name = "temporal";
-      ensureDBOwnership = true;
-    }];
+    ensureDatabases = [
+      "temporal"
+      "temporal_visibility"
+    ];
+    ensureUsers = [
+      {
+        name = "temporal";
+        ensureDBOwnership = true;
+      }
+    ];
   };
 
   # Temporal server
@@ -27,12 +37,14 @@ in
       persistence = {
         defaultStore = "postgres-default";
         visibilityStore = "postgres-visibility";
+        numHistoryShards = 512;
         datastores = {
           postgres-default = {
             sql = {
               pluginName = "postgres12";
               databaseName = "temporal";
               connectAddr = "/run/postgresql";
+              connectProtocol = "tcp";
               user = "temporal";
             };
           };
@@ -41,6 +53,7 @@ in
               pluginName = "postgres12";
               databaseName = "temporal_visibility";
               connectAddr = "/run/postgresql";
+              connectProtocol = "tcp";
               user = "temporal";
             };
           };
@@ -61,7 +74,12 @@ in
     enable = true;
     port = surrealdbPort;
     dbPath = "rocksdb:///var/lib/surrealdb/";
-    extraFlags = [ "--user" "root" "--pass" "root" ]; # Or use secrets
+    extraFlags = [
+      "--user"
+      "root"
+      "--pass"
+      "root"
+    ]; # Or use secrets
   };
 
   # ===== Glider Application =====
