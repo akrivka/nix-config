@@ -92,7 +92,7 @@ in
     '';
     # SurrealDB exposed for remote Surrealist connection from laptop
     "http://surrealdb.adam".extraConfig = ''
-      reverse_proxy http://[::1]:${toString surrealdbPort}
+      reverse_proxy http://127.0.0.1:${toString surrealdbPort}
     '';
   };
 }
