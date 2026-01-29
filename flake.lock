@@ -29,11 +29,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1769725387,
-        "narHash": "sha256-vfVDYYI+q66j0K8KfDGZc9Pvh5NMd525D4Cb6OnIE90=",
+        "lastModified": 1769726459,
+        "narHash": "sha256-I4InhZD2bsNJ7LAeZ/sBqWsl6eP96uTuxzwJbVQMMCE=",
         "owner": "akrivka",
         "repo": "glider",
-        "rev": "62ea8e208cbac59e976a6dac5a9800e9573bc30f",
+        "rev": "1e315e67d010616432191c850c70d3f391e4980b",
         "type": "github"
       },
       "original": {
