@@ -37,8 +37,10 @@
     enable = true;
     brews = [
       "imagemagick"
+      "ghostscript"
       "git"
       "node"
+      "oven-sh/bun/bun"
       "pnpm"
       "yarn"
       "python@3.13"
@@ -48,6 +50,7 @@
       "fzf"
       "lazygit"
       "ffmpeg"
+      "rustup"
     ];
     casks = [
       "betterdisplay"
@@ -61,6 +64,8 @@
       "karabiner-elements"
       "notion"
       "slack"
+      "codex"
+      "claude-code"
       # i3-like tiling window manager for macOS
       # "nikitabobko/tap/aerospace"
     ];
@@ -68,7 +73,10 @@
     onActivation.upgrade = true;
     onActivation.cleanup = "zap";
     global.brewfile = true;
-    taps = [ "nikitabobko/tap" ];
+    taps = [
+      "nikitabobko/tap"
+      "oven-sh/bun"
+    ];
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
