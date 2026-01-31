@@ -29,11 +29,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1769726459,
-        "narHash": "sha256-I4InhZD2bsNJ7LAeZ/sBqWsl6eP96uTuxzwJbVQMMCE=",
+        "lastModified": 1769805585,
+        "narHash": "sha256-MNQlrFSauoy/xgR+vW4la4OKeixvXfoKeTLoPXymqA8=",
         "owner": "akrivka",
         "repo": "glider",
-        "rev": "1e315e67d010616432191c850c70d3f391e4980b",
+        "rev": "d6305894ffc04df7f292bd770cab3bdb1ddfbf43",
         "type": "github"
       },
       "original": {
@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769723138,
-        "narHash": "sha256-kgkwjs33YfJasADIrHjHcTIDs3wNX0xzJhnUP+oldEw=",
+        "lastModified": 1769813945,
+        "narHash": "sha256-9ABv9Lo9t6MrFjlnRnU8Zw1C6LVj2+R8PipQ/rxGLHk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "175532b6275b34598a0ceb1aef4b9b4006dd4073",
+        "rev": "475921375def3eb930e1f8883f619ff8609accb6",
         "type": "github"
       },
       "original": {
