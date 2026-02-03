@@ -64,14 +64,12 @@
       "karabiner-elements"
       "notion"
       "slack"
-      "codex"
-      "claude-code"
       # i3-like tiling window manager for macOS
       # "nikitabobko/tap/aerospace"
     ];
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
-    onActivation.cleanup = "zap";
+    #onActivation.cleanup = "zap";
     global.brewfile = true;
     taps = [
       "nikitabobko/tap"

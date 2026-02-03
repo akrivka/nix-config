@@ -26,7 +26,6 @@
       "dbmate"
       "awscli"
       "postgresql@17"
-      "codex"
       "gemini-cli"
       "libpq"
     ];

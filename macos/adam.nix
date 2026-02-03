@@ -26,8 +26,8 @@
       # Don't insert a blank line between prompts.
       add_newline = false;
 
-      # Example prompt formatting.
-      format = "$directory$git_branch$git_state$git_status$cmd_duration$line_break$character";
+      # Example prompt formatting (single line, no line break).
+      format = "$directory$git_branch$git_state$git_status$cmd_duration $character";
 
       # Customize the prompt symbols.
       character = {
