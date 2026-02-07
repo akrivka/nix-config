@@ -19,7 +19,7 @@
     #./services/mealie.nix
     #./services/gitea.nix
     ./services/glider.nix
-    ./services/filebrowser.nix
+    #./services/filebrowser.nix
   ];
 
   # DO NOT CHANGE THIS!!!
