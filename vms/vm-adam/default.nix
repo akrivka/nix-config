@@ -20,6 +20,7 @@
     #./services/gitea.nix
     ./services/glider.nix
     #./services/filebrowser.nix
+    ./services/karakeep.nix
   ];
 
   # DO NOT CHANGE THIS!!!
