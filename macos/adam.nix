@@ -13,6 +13,11 @@
   home.file."Library/Application Support/org.yanex.marta/conf.marco".source =
     ./configs/marta-manual/conf.marco;
 
+  home.sessionVariables = {
+    EDITOR = "zed --wait";
+    VISUAL = "zed --wait";
+  };
+
   # Optionally, include additional user packages.
   home.packages = [ ];
 
@@ -51,6 +56,7 @@
         fish_add_path -a -g "$HOME/.local/bin"
       end
       fish_add_path -a -g /opt/homebrew/opt/libpq/bin
+      fish_add_path -a -g /Users/adam/.bun/bin
     '';
     # Initialize Homebrew environment variables for both login and interactive shells.
     loginShellInit = ''
@@ -95,7 +101,7 @@
           end
           git branch -d -- $b
         end
-        '';
+      '';
       gcb = ''
         # If no arguments, use fzf to select branch
         if test (count $argv) -eq 0
@@ -104,19 +110,19 @@
                 echo "Error: Not in a git repository"
                 return 1
             end
-            
+
             # Get list of all branches (local + remote), normalize and deduplicate
             set -l selected_branch (git branch -a --format='%(refname:short)' | \
                 sed 's|^remotes/origin/||' | \
                 grep -v '^HEAD$' | \
                 sort -u | \
                 fzf --prompt='Select branch: ' --height=40% --reverse)
-            
+
             # If no selection made (ESC pressed), exit
             if test -z "$selected_branch"
                 return 0
             end
-            
+
             set argv[1] $selected_branch
         else if test (count $argv) -ne 1
             echo "Usage: gcb [branch-name]"
@@ -173,7 +179,17 @@
         else
             return 1
         end
-        '';  
+      '';
+      gw = ''
+        set -l dest (command gw $argv | string collect)
+        set -l gw_status $status
+        if test $gw_status -ne 0
+          return $gw_status
+        end
+        if test -n "$dest"
+          cd "$dest"
+        end
+      '';
     };
   };
 }

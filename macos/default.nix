@@ -36,11 +36,12 @@
   homebrew = {
     enable = true;
     brews = [
+      "tmux"
       "imagemagick"
       "ghostscript"
       "git"
       "node"
-      "oven-sh/bun/bun"
+      "bun"
       "pnpm"
       "yarn"
       "python@3.13"
@@ -51,6 +52,7 @@
       "lazygit"
       "ffmpeg"
       "rustup"
+      #"bitwarden"
     ];
     casks = [
       "betterdisplay"
@@ -60,7 +62,6 @@
       "spotify"
       "raycast"
       "visual-studio-code"
-      "bitwarden"
       "karabiner-elements"
       "notion"
       "slack"
