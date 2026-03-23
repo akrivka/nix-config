@@ -28,6 +28,14 @@
       "postgresql@17"
       "gemini-cli"
       "libpq"
+      "chainguard-dev/tap/chainctl"
+      "helm"
+      "skaffold"
+      "k9s"
+      "kubectl"
+    ];
+    taps = [
+      "chainguard-dev/tap"
     ];
   };
 }
